@@ -1,0 +1,583 @@
+\documentclass[a4paper]{article}
+\usepackage[margin=1cm,bmargin=2cm,footskip=1cm]{geometry}
+\usepackage{listings}
+\usepackage[T1]{fontenc}
+\usepackage{multicol}
+\usepackage[utf8]{inputenc} % TODO novo
+%\usepackage[brazilian]{babel}
+\usepackage{lmodern}
+\usepackage{amsmath}
+\usepackage{caption}
+\usepackage{multirow}
+\usepackage{fontspec}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{colortbl}
+\setmonofont[
+  Path = TTF/,
+  UprightFont = *-Regular,
+  BoldFont = *-Bold,
+  ItalicFont = *-Italic,
+  BoldItalicFont = *-BoldItalic,
+  Extension = .ttf
+]{Fantasque Sans Mono}
+
+\definecolor{commentgreen}{RGB}{2,112,10}
+\definecolor{eminence}{RGB}{210,31,60}
+
+\newcommand{\bigO}{\mathcal{O}}
+\lstset{
+  numbers=left,
+  breaklines=true,
+  breakatwhitespace=true,
+  numbersep=5pt,
+  %rulecolor=\color{black},
+  xleftmargin=\parindent,
+  basicstyle=\footnotesize\ttfamily,
+  showspaces=false,
+  showstringspaces=false,
+  language=C++,
+  columns=fullflexible,
+  commentstyle=\color{commentgreen},
+  keywordstyle=\color{eminence},
+  escapeinside={<@}{@>},
+  tabsize=2,
+}
+\lstset{literate=
+  {á}{{\'a\lst@whitespacefalse}}1 {é}{{\'e\lst@whitespacefalse}}1
+  {í}{{\'i\lst@whitespacefalse}}1 {ó}{{\'o\lst@whitespacefalse}}1
+  {ú}{{\'u\lst@whitespacefalse}}1
+  {Á}{{\'A\lst@whitespacefalse}}1 {É}{{\'E\lst@whitespacefalse}}1
+  {Í}{{\'I\lst@whitespacefalse}}1 {Ó}{{\'O\lst@whitespacefalse}}1
+  {Ú}{{\'U\lst@whitespacefalse}}1
+  {à}{{\`a\lst@whitespacefalse}}1 {è}{{\`e\lst@whitespacefalse}}1
+  {ì}{{\`i\lst@whitespacefalse}}1 {ò}{{\`o\lst@whitespacefalse}}1
+  {ù}{{\`u\lst@whitespacefalse}}1
+  {À}{{\`A\lst@whitespacefalse}}1
+  {È}{{\'E\lst@whitespacefalse}}1 {Ì}{{\`I\lst@whitespacefalse}}1
+  {Ò}{{\`O\lst@whitespacefalse}}1 {Ù}{{\`U\lst@whitespacefalse}}1
+  {ä}{{\"a\lst@whitespacefalse}}1 {ë}{{\"e\lst@whitespacefalse}}1
+  {ï}{{\"i\lst@whitespacefalse}}1 {ö}{{\"o\lst@whitespacefalse}}1
+  {ü}{{\"u\lst@whitespacefalse}}1
+  {Ä}{{\"A\lst@whitespacefalse}}1 {Ë}{{\"E\lst@whitespacefalse}}1
+  {Ï}{{\"I\lst@whitespacefalse}}1 {Ö}{{\"O\lst@whitespacefalse}}1
+  {Ü}{{\"U\lst@whitespacefalse}}1
+  {â}{{\^a\lst@whitespacefalse}}1 {ê}{{\^e\lst@whitespacefalse}}1
+  {î}{{\^i\lst@whitespacefalse}}1 {ô}{{\^o\lst@whitespacefalse}}1
+  {û}{{\^u\lst@whitespacefalse}}1
+  {Â}{{\^A\lst@whitespacefalse}}1 {Ê}{{\^E\lst@whitespacefalse}}1
+  {Î}{{\^I\lst@whitespacefalse}}1 {Ô}{{\^O\lst@whitespacefalse}}1
+  {Û}{{\^U\lst@whitespacefalse}}1
+  {Ã}{{\~A\lst@whitespacefalse}}1 {ã}{{\~a\lst@whitespacefalse}}1
+  {Õ}{{\~O\lst@whitespacefalse}}1 {õ}{{\~o\lst@whitespacefalse}}1
+  {œ}{{\oe\lst@whitespacefalse}}1 {Œ}{{\OE\lst@whitespacefalse}}1
+  {æ}{{\ae\lst@whitespacefalse}}1 {Æ}{{\AE\lst@whitespacefalse}}1
+  {ß}{{\ss\lst@whitespacefalse}}1
+  {ű}{{\H{u}\lst@whitespacefalse}}1 {Ű}{{\H{U}\lst@whitespacefalse}}1
+  {ő}{{\H{o}\lst@whitespacefalse}}1 {Ő}{{\H{O}\lst@whitespacefalse}}1
+  {ç}{{\c c\lst@whitespacefalse}}1 {Ç}{{\c C\lst@whitespacefalse}}1
+  {ø}{{\o\lst@whitespacefalse}}1
+  {å}{{\r a\lst@whitespacefalse}}1 {Å}{{\r A\lst@whitespacefalse}}1
+  {€}{{\euro\lst@whitespacefalse}}1 {£}{{\pounds\lst@whitespacefalse}}1
+  {«}{{\guillemotleft\lst@whitespacefalse}}1
+  {»}{{\guillemotright\lst@whitespacefalse}}1
+  {ñ}{{\~n\lst@whitespacefalse}}1 {Ñ}{{\~N\lst@whitespacefalse}}1
+  {¿}{{?`\lst@whitespacefalse}}1
+  {º}{{\textordmasculine\lst@whitespacefalse}}1
+  %{~}{{\raisebox{0.5ex}{\texttildelow}\lst@whitespacefalse}}1
+  %{^}{{\raisebox{-0.75ex}{\^{}}\lst@whitespacefalse}}1
+}
+
+\title{Competitive Programming Notebook}
+\author{Raul Almeida$^1$}
+\date{$^1$Universidade Federal do Paraná\\[2ex]\today}
+
+\begin{document}
+\twocolumn
+\maketitle
+
+% \maketitle
+\tableofcontents
+\begin{table*}
+\centering
+  \begin{tabular}{lll}
+    \hline
+    $n$ & not-TLE algorithm & Example \\ \hline
+    $\leq [10..11]$ & $\bigO(n!)$, $\bigO(n^6)$ & Enumerate permutations \\
+    $\leq [15..18]$ & $\bigO(2^n n^2)$ & TSP with DP \\
+    $\leq [18..22]$ & $\bigO(2^n n)$ & Bitmask DP \\
+    $\leq 100$ & $\bigO(n^4)$ & 3D DP with $\bigO(n)$ loop \\
+    $\leq 400$ & $\bigO(n^3)$ & Floyd-Warshall \\
+    $\leq 2\cdot 10^3$ & $\bigO(n^2 \lg n)$ & 2 nested loops + tree query \\
+    $\leq 5\cdot 10^4$ & $\bigO(n^2)$ & Bubble/Selection/Insertion Sort \\
+    $\leq 10^5$ & $\bigO(n \lg^2 n) = \bigO((\lg n)(\lg n))$ & Build suffix array \\
+    $\leq 10^6$ & $\bigO(n \lg n)$ & MergeSort, build SegTree \\
+    $\leq 10^7$ & $\bigO(n \lg \lg n)$ & Sieve, totient function \\
+    $\leq 10^8$ & $\bigO(n)$, $\bigO(\lg n)$, $\bigO(1)$ & Mathy solution often with IO bottleneck ($n \leq 10^9$) \\
+    \hline
+  \end{tabular}
+  \caption*{$10^8$ ops/second}
+\end{table*}
+
+
+\newpage
+\section{Theory}
+\subsection{Relevant comparisons}
+\begin{table}[ht]
+  \centering
+  \begin{tabular}{l|r}
+    \hline
+    $\lg 10$ (\texttt{1E1}) & 2.3 \\
+    $\lg 100$ (\texttt{1E1}) & 4.6 \\
+    $\lg 1000$ (\texttt{1E2}) & 6.9 \\
+    $\lg 10000$ (\texttt{1E3}) & 9.2 \\
+    $\lg 100000$ (\texttt{1E4}) & 11.5 \\
+    $\lg 1000000$ (\texttt{1E5}) & 13.8 \\
+    $\lg 10000000$ (\texttt{1E6}) & 16.1 \\
+    $\lg 100000000$ (\texttt{1E7}) & 18.4 \\
+    $\lg 1000000000$ (\texttt{1E8}) & 20.7 \\
+    $\lg 10000000000$ (\texttt{1E9}) & 23.0 \\
+    $\lg 100000000000$ (\texttt{1E10}) & 25.3 \\
+    $\lg 1000000000000$ (\texttt{1E11}) & 27.6 \\
+    $\lg 10000000000000$ (\texttt{1E12}) & 29.9 \\
+    $2^{10}$ & $\approx 10^{3}$ \\
+    $2^{20}$ & $\approx 10^{6}$ \\
+    \hline
+  \end{tabular}
+\end{table}
+
+\begin{table}[ht]
+  \centering
+  \begin{tabular}{crcccc}
+    \hline
+    Sign & Type & Bits & Max & Digits \\
+    \hline
+    $\pm$ & \texttt{char} & 8 & 127 & 2 \\
+     $+$  & \texttt{unsigned char} & 8 & 255 & 2 \\
+    $\pm$ & \texttt{short} & 16 & 32\,767 & 4 \\
+     $+$  & \texttt{unsigned short} & 16 & 65\,535 & 4 \\
+    $\pm$ & \texttt{int}/\texttt{long} & 32 & $\approx 2 \cdot 10^{9}$ & 9\\
+     $+$  & \texttt{unsigned int}/\texttt{long} & 32 & $\approx 4 \cdot 10^{9}$ & 9 \\
+    $\pm$ & \texttt{long long} & 64 & $\approx 9 \cdot 10^{18}$ & 18 \\
+     $+$  & \texttt{unsigned long long} & 64 & $\approx 18 \cdot 10^{18}$ & 19 \\
+    $\pm$ & \texttt{\_\_int128} & 128 & $\approx 17 \cdot 10^{37}$ & 38 \\
+     $+$  & \texttt{unsigned \_\_int128} & 128 & $\approx 3 \cdot 10^{38}$ & 38 \\
+    \hline
+  \end{tabular}
+\end{table}
+
+\begin{table}[ht]
+  \centering
+  \begin{tabular}{lcc}
+    \hline
+    Algorithm & Time & Space \\
+    \hline
+    %aqui
+    \hline
+    ArticBridges & $\mathcal{O}(V+E)$ & $\mathcal{O}(V+E)$ \\
+    Bellman-Ford & $\mathcal{O}(VE)$ & $\mathcal{O}(V+E)$ \\
+    Dijksta & $\mathcal{O}((V+E) \log V)$ & $\mathcal{O}(V^2)$ \\
+    Edmond Karp & $\mathcal{O}(VE^2)$ & $\mathcal{O}(V+E)$ \\
+    Euler Tour & $\mathcal{O}(E^2)$ & \\
+    Floyd Warshall & $\mathcal{O}(V^3+E)$ & $\mathcal{O}(V^2+E)$ \\
+    Graph Check & $\mathcal{O}(V+E)$ & $\mathcal{O}(V+E)$ \\
+    Kahn & $\mathcal{O}(VE)$ & $\mathcal{O}(V+E)$ \\
+    Kruskal & $\mathcal{O}(E \log V)$ & $\mathcal{O}(V+E)$ \\
+    LCA & $\mathcal{O}(N \log N)$ & $\mathcal{O}(N \log N)$ \\
+    MCBM & $\mathcal{O}(VE)$ & \\
+    Prim & $\mathcal{O}(E \log V)$ & $\mathcal{O}(V+E)$ \\
+    Tarjan & $\mathcal{O}(V+E)$ & $\mathcal{O}(V+E)$ \\
+    Extended Euclid & $\mathcal{O}(\log \min(a, b))$ & $\mathcal{O}(1)$ \\
+    Floyd (cycle) & $\mathcal{O}(V)$ & $\mathcal{O}(1)$ \\
+    PrimeFac + OptTrialDiv & $\mathcal{O}(\pi(\sqrt{n}))$ & $\mathcal{O}(n)$ \\
+    Sieve of Eratosthenes & $\mathcal{O}(n \log \log n)$ & $\mathcal{O}(n)$ \\
+    Binary Search & $\mathcal{O}(\log N)$ & \\
+    Coordinate Compression & $\mathcal{O}(N \log N)$ & \\
+    KMP & $\mathcal{O}(N)$ & \\
+    MUF & $\mathcal{O}(AM)$ & $\mathcal{O}(N)$ \\
+    Bottom-Up SegTree & $\mathcal{O}(\log N)$ & $\mathcal{O}(N)$ \\
+    \hline
+  \end{tabular}
+\end{table}
+
+\subsection{Prime counting function - pi(x)}
+Asymptotic to $\frac{x}{\log x}$ by the prime number theorem.
+
+\begin{table}[ht]
+  \centering
+  \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+  \hline
+    \rowcolor{gray!40}
+    x&10&$10^2$&$10^3$&$10^4$\\ \hline
+    $\pi(x)$& 4 & 25 & 168 & 1\,229 \\ \hline
+    \rowcolor{gray!40}
+    x&$10^5$&$10^6$&$10^7$&$10^8$\\ \hline
+    $\pi(x)$& 9\,592 & 78\,498 & 664\,579 & 5\,761\,455\\ \hline
+  \end{tabular}
+\end{table}
+
+
+\subsection{Progressions}
+\begin{align*}
+  a_n = a_k + r(n - k) \\
+  a_n = a_k q^{(n-k)}
+\end{align*}
+\begin{itemize}
+  \item $r$, $q$: Ratio
+  \item $k$: Known term
+  \item $n$: Term you want
+\end{itemize}
+\begin{align*}
+  S_n = \frac{n(a_1 + a_n)}{2} \\
+  S_n = \frac{a_1(q^n - 1)}{q-1}
+\end{align*}
+
+\subsection{Series Identities}
+$$\sum_{i=1}^{n} i^{2} = \frac{n(n+1)(2n+1)}{6}  \qquad  \sum_{i=1}^{n} i^{3} = \frac{n^{2}(n+1)^{2}}{4} = \left(\sum_{i=1}^n i\right)^2$$
+
+$$ g_k(n) = \sum_{i=1}^n i^k = \frac{1}{k+1} \left( n^{k+1} + \sum_{j=1}^k \binom{k+1}{j+1} (-1)^{j+1} g_{k-j}(n) \right) $$
+
+$$\sum_{i=0}^{n} ic^{i} = \frac{nc^{n+2} - (n+1)c^{n+1} + c}{(c-1)^{2}}, \quad c \neq 1$$
+
+$$\sum_{i=0}^{\infty} ic^{i} = \frac{c}{(1-c)^{2}}, \quad |c| < 1$$
+
+\subsection{Binomial Identities}
+
+$$
+\binom{n}{k} = \frac{n}{k}\binom{n-1}{k-1}
+$$
+$$
+\binom{n-1}{k} - \binom{n-1}{k-1} = \frac{n - 2k}{k} \binom{n}{k}
+$$
+$$
+\binom{n}{h}\binom{n-h}{k} = \binom{n}{k}\binom{n-k}{h}
+$$
+$$
+\binom{n}{k} = \frac{n+1-k}{k} \binom{n}{k-1}
+$$
+$$
+\sum_{k = 0}^n k\binom{n}{k} = n 2^{n-1}
+$$
+$$
+\sum_{k = 0}^n k^2 \binom{n}{k} = (n + n^2)2^{n-2}
+$$
+$$
+\sum_{j = 0}^k\binom{m}{j} \binom{n-m}{k-j} = \binom{n}{k}
+$$
+$$
+\sum_{j = 0}^m \binom{m}{j}^2 = \binom{2m}{m}
+$$
+$$
+\sum_{m = 0}^n \binom{m}{j} \binom{n-m}{k-j} = \binom{n+1}{k+1}
+$$
+$$
+\sum_{m = k}^n \binom{m}{k} = \binom{n+1}{k+1}
+$$
+$$
+\sum_{r = 0}^m \binom{n+r}{r} = \binom{n+m+1}{m}
+$$
+$$
+\sum_{k=0}^{\lfloor n/2 \rfloor} \binom{n-k}{k} = \text{Fib}(n+1)
+$$
+$$
+(x + y)^{n} = \sum_{k=0}^{n} \binom{n}{k} x^{n-k} y^{k}
+$$
+$$
+(1 + x)^{n} = \sum_{k=0}^{n} \binom{n}{k} x^{k}
+$$
+$$
+2\sum_{i = L}^R \binom{n}{i} - \binom{n}{L} - \binom{n}{R} = \sum_{i = L+1}^R \binom{n+1}{i}
+$$
+
+\subsection{Lucas' Theorem}
+\begin{align*}
+  \binom{n}{m} = \Pi_{i=0}^{k} \binom{n_i}{m_i} \pmod{p}
+\end{align*}
+For prime $p$, $n_i$ and $m_i$ are coefficients of the representations of $n$ and $m$ in base $p$.
+
+\subsection{Fermat Theorems}
+$p$ is prime
+\begin{align*}
+  a^p = a \pmod{p} \\
+  a^{p-1} = 1 \pmod{p} \\
+  (a + b)^p = a^p + b^p \pmod{p} \\
+  a^{-1} = a^{p-2} \pmod{p}
+\end{align*}
+
+\subsection{Modulo @ exponent}
+For coprime $a, m$:
+$$ a^n \equiv a^{n \text{ mod } \varphi(m)} \quad (\text{mod } m) $$
+
+Generally, if $n \geq \log_2 m$, then
+
+$$ a^n \equiv a^{\varphi(m) + [n \text{ mod } \varphi(m)]} \quad (\text{mod } m) $$
+
+\subsection{Heron's Formula}
+Area of a triangle ($s = \frac{a+b+c}{2}$)
+\begin{align*}
+  A = \sqrt{s(s-a)(s-b)(s-c)}
+\end{align*}
+
+\subsection{Some Primes}
+\begin{multicols}{2}
+\begin{itemize}
+  \itemsep -2pt
+  \item $10^6 + 69$
+  \item $10^9 + 7$
+  \item $10^9 + 9$
+  \item $10^{18}-11$
+  \item $10^{18}+3$
+  \item $2^{61}-1$
+  \item $1000696969$
+  \item $998244353$
+  \item 999999937
+  \item 1000000007
+  \item 1000000009
+  \item 1000000021
+  \item 1000000033
+  \item $10^{18} - 11$
+  \item $10^{18} + 3$
+  \item $2305843009213693951 = 2^{61} - 1$
+\end{itemize}
+\end{multicols}
+
+\subsection{Catalan Numbers}
+{\sloppy
+1, 1, 2, 5, 14, 42, 132, 429, 1430, 4862, 16796, 58786, 208012, 742900, 2674440,
+9694845, 35357670, 129644790, 477638700, 1767263190, 6564120420,
+24466267020, 91482563640, \\343059613650, 1289904147324, 4861946401452,
+\\18367353072152, 69533550916004, 263747951750360, \\1002242216651368.}
+
+\begin{align*}
+  C_n = \frac{1}{n+1} \binom{2n}{n} = \frac{(2n)!}{(n+1)!n!} = \Pi^n_{k=2} \frac{n+k}{k}, n \ge 0.
+\end{align*}
+
+$C_n$ is:
+\begin{itemize}
+  \itemsep -2pt
+  \item The number of valid parenthesis strings with $n$ parentheses
+  \item The number of complete binary trees with $n+1$ leaves
+  \item How many times a $n+2$-sided convex polygon can be cut in triangles conecting its vertices with straight lines
+\end{itemize}
+
+\subsection{Binomial}
+$X$ is the number of successes in a sequence of $n$ independent experiments.  $P(X = k) = \binom{n}{k}\,p^{k}(1-p)^{n-k}$, and $E[X] = np$ and $Var(X) = np(1-p)$.
+
+\subsection{Trigonometry}
+$\sin^2\theta + \cos^2\theta = 1$, $\sin = \frac{opo}{hip}$, $\cos = \frac{adj}{hip}$, $\tan = \frac{opo}{adj}$. $\sin \theta = x \to \arcsin x = \theta$.
+
+$\alpha$ degrees to $x$ rd: $\alpha = \frac{180x}{\pi}$
+
+\subsection{Multiples of gcd}
+Multiples of $\textrm{gcd}(A, B)$ that are $\in [0, A)$
+
+Let $A, B > 0$, $g = \textrm{GCD}(A, B)$, $A = ag$ and $B = bg$.
+
+$a$ integers
+$(0\times B) \% A,\; (1\times B) \% A,\; (2\times B) \% A \dotsc ((a-1)\times B) \% A$
+correspond to each multiple of $g$ between $0$ and $A-1$ (inclusive); note that they
+are all unique.
+
+\subsection{Expected Value}
+Avg value of event. For each event, add to the sum the probability of an event times the value of $X$ in that event
+$\mathbb{E}(X) = \sum_{\omega \in \Omega} (P(\omega)\times X(\omega))$
+
+Another way of looking at it:
+
+$\mathbb{E}(X) = \sum_{i=1}^{M} (i \times P(X=i))$
+
+Since in the expanded version of this sum $P(X=i)$ will appear $i$ times, you're also calculating for each $i$ the probability that $X \geq i$ ($P(x=M)$ will appear $M$ times, once for each $i$; $P(x=1)$ will appear exactly once, for $i=1$; and so on). So
+
+$\mathbb{E}(X) = \sum_{i=1}^{M} (i \times P(X=i)) = \sum_{i=1}^{M} P(X \geq i)$
+
+\subsection{Combination}
+A combination ${}_nC_k = \binom{n}{k}$ ($n$ \textit{chooses} $k$) refers to selecting $k$ objects from a collection of $n$ where the order of choice doesn't matter.
+
+\textbf{Without repetition:} can't choose an element twice. $\binom{n}{k} = \frac{n!}{r!(n-k)!}$
+
+\textbf{With repetition:} elements may be chosen more than once. $\binom{n}{k} = \frac{(k+n-1)!}{k!(n-1)!}$
+
+\subsection{Permutation}
+A permutation ${}_nP_k$ refers to selecting $k$ objects from a collection of $n$ where the order of choice matters.
+
+\textbf{With repetition:} elements may be chosen more than once. ${}_nP_k = n^k$
+
+\textbf{Without repetition:} can't choose an element twice. ${}_nP_k = \frac{n!}{(n-k)!}$
+
+\section{Paradigm}
+\subsection{Bounds in C++}
+\begin{itemize}
+  \item \textbf{Last element $\leq x$:} \texttt{upper\_bound - 1}
+  \item \textbf{First element $\geq x$:} \texttt{lower\_bound}
+  \item \textbf{\texttt{upper\_bound}:} first element $> x$
+  \item \textbf{\texttt{lower\_bound}:} first element $>= x$
+\end{itemize}
+
+\subsection{Coordinate Compression}
+Normalize vector access; can also be done with map/set but high constant
+
+\section{String}
+\subsection{Suffix Array}
+To find whether $p$ is a substring of $s$ (and where this ocurrence starts), you can build the suffix array $A$ of $s$. Since $A$ is sorted, you can binary search for $p$ as a prefix of all suffixes of $s$. \textbf{Complexity (besides construction):} $\mathcal{O}(\left|p\right|\log(\left|s\right|))$.
+
+\subsection{Prefix Function (KMP)}
+To find ocurrences of \texttt{s} in \texttt{t}, use the string \texttt{s+\%+t}, then look for \texttt{pi[i] = s.length()} on the "\texttt{t} side"
+
+\subsection{Hash}
+Let $h_{i..j} = \textrm{hash}(s_{i..j})$.
+
+$h_{i..j}\times p^i = h_{0..j} - h_{0..i-1}$. Instead of finding the multiplicative inverse of $p^i$, you can multiply this term by $p^{n-i}$ (so every hash is compared multiplied by $p^n$).
+
+\section{Emergency}
+\noindent
+\textbf{Pre-submit}
+
+\noindent
+Write a few simple test cases if sample is not enough.
+
+\noindent
+Are time limits close? If so, generate max cases.
+
+\noindent
+Is the memory usage fine?
+
+\noindent
+Could anything overflow?
+
+\noindent
+Make sure to submit the right file (check the filename you're editing).
+
+\noindent
+\textbf{Wrong answer}
+
+\noindent
+Print your solution and debug output!
+
+\noindent
+Are you clearing all data structures between test cases?
+
+\noindent
+Can your algorithm handle the whole range of input?
+
+\noindent
+Read the full problem statement again.
+
+\noindent
+Do you handle all corner cases correctly?
+
+\noindent
+Have you understood the problem correctly?
+
+\noindent
+Any uninitialized variables?
+
+\noindent
+Any overflows?
+
+\noindent
+Confusing \texttt{N} and \texttt{M}, \texttt{i} and \texttt{j}, etc.?
+
+\noindent
+Are you sure your algorithm works?
+
+\noindent
+What special cases have you not thought of?
+
+\noindent
+Are you sure the STL functions you use work as you think?
+
+\noindent
+Add some assertions, maybe resubmit.
+
+\noindent
+Create some testcases to run your algorithm on.
+
+\noindent
+Go through the algorithm for a simple case.
+
+\noindent
+Go through this list again.
+
+\noindent
+Explain your algorithm to a teammate.
+
+\noindent
+Ask the teammate to look at your code.
+
+\noindent
+Go for a small walk, e.g. to the toilet.
+
+\noindent
+Is your output format correct? (including whitespace)
+
+\noindent
+Rewrite your solution from the start or let a teammate do it.
+
+\noindent
+\textbf{Runtime error}
+
+\noindent
+Have you tested all corner cases locally?
+
+\noindent
+Any uninitialized variables?
+
+\noindent
+Are you reading or writing outside the range of any vector?
+
+\noindent
+Any assertions that might fail?
+
+\noindent
+Any possible division by 0? (\texttt{mod 0} for example)
+
+\noindent
+Any possible infinite recursion?
+
+\noindent
+Invalidated pointers or iterators?
+
+\noindent
+Are you using too much memory?
+
+\noindent
+Debug with resubmits (e.g. remapped signals, see Various).
+
+\noindent
+\textbf{Time limit exceeded}
+
+\noindent
+Do you have any possible infinite loops?
+
+\noindent
+What is the complexity of your algorithm?
+
+\noindent
+Are you copying a lot of unnecessary data? (use references)
+
+\noindent
+How big is the input and output? (consider \texttt{scanf} and \texttt{printf})
+
+\noindent
+Avoid \texttt{vector}, \texttt{map}. (use \texttt{array}/\texttt{unordered\_map})
+
+\noindent
+What do your teammates think about your algorithm?
+
+\noindent
+\textbf{Memory limit exceeded}
+
+\noindent
+What is the max amount of memory your algorithm should need?
+
+\noindent
+Are you clearing all data structures between test cases?
+
+\section{To do}
+Agora é só juntar tudo isso com os códigos e permitir latex no início do código
+// nome da seção
+/* latex
+coisas em latex $e tal$
+*/
+codigo em c++
