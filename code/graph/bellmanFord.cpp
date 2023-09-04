@@ -1,6 +1,14 @@
 // Bellman-Ford SSSP
-// Status: tested (UVA1112, UVA10449)
-// O(VE) time, O(V+E) space
+/* latex
+\vspace{4pt}
+\noindent
+\begin{tabular}{ll}
+  \hline
+  \textbf{Time} & \textbf{Space} \\ \hline
+  $\bigO(VE)$ & $\bigO(V+E)$ \\
+  \hline
+\end{tabular}
+*/
 const int inf = 0x3f3f3f3f;
 vector<vector<pair<int, int>>> adj(M);
 vector<int> dist(M, inf);

@@ -1,7 +1,14 @@
 // Prim MST
-// Status: tested (UVA10048)
-// O(E log V) time, O(V+E) space
-
+/* latex
+\vspace{4pt}
+\noindent
+\begin{tabular}{ll}
+  \hline
+  \textbf{Time} & \textbf{Space} \\ \hline
+  $\bigO(E\log V)$ & $\bigO(V+E)$ \\
+  \hline
+\end{tabular}
+*/
 vector<vector<pair<int, int>> adj(M), mst(M);
 vector<bool> taken(M, false);
 int cost = 0;

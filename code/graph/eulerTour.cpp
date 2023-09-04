@@ -1,9 +1,14 @@
 // Euler Tour
-// Usage: tour(cyc.begin(), start\_vertex)
-// Status: not tested
-// Source: CP3 (pg. 205)
-// O(E^2) time
-
+/* latex
+\vspace{4pt}
+\noindent
+\begin{tabular}{ll}
+  \hline
+  \textbf{Time} & \textbf{Usage} \\ \hline
+  $\bigO(E^2)$ & \texttt{tour(cyc.begin(), start\_vertex)}\\
+  \hline
+\end{tabular}
+*/
 list<int> cyc;
 vector<vector<int>> adj(M);
 vector<vector<bool>> traversed(M, vector<bool>(M, false));

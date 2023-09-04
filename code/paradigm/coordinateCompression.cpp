@@ -1,8 +1,8 @@
 // Coordinate Compression
-// Status: not tested
-// Source: GEMA ICMC (YouTube)
-// O(N log N) time
-
+/* latex
+Normalize vector access; can also be done with map/set but
+high constant. $\bigO(n\log n)$ time
+*/
 vector<int> v, vals, cv; // all of the same size, cv = compressed v
 vals = v;
 sort(vals.begin(), vals.end());

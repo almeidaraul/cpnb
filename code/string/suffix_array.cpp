@@ -1,8 +1,14 @@
 // Suffix Array
-// Status: tested (ITMO course)
-// Source: ITMO @ CF Edu, CP-Algorithms
-// O(nlogn) construction
-
+/* latex
+\vspace{4pt}
+\noindent
+\begin{tabular}{ll}
+  \hline
+  \textbf{Build} & \textbf{Query} \\ \hline
+  $\bigO(n\log n)$ & $\bigO(\log n)$ \\
+  \hline
+\end{tabular}
+*/
 // sort p by the values in c (stable) (O(|alphabet| + n))
 void count_sort(vector<int> &p, vector<int> &c) {
   int n = p.size();

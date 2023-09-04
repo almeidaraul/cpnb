@@ -1,7 +1,14 @@
 // Graph Check
-// Usage: graphCheck(firstVertex, -1) (p stands for parent)
-// O(V+E) time & space
-
+/* latex
+\vspace{4pt}
+\noindent
+\begin{tabular}{ll}
+  \hline
+  \textbf{Time/Space} & \textbf{Usage} \\ \hline
+  $\bigO(V+E)$ & \texttt{graphCheck(firstVertex, -1)} \\
+  \hline
+\end{tabular}
+*/
 int UNVISITED = -1, EXPLORED = 0, VISITED = 1;
 vector<vector<int>> adj(M);
 vector<int> tin;

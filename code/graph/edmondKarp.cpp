@@ -1,6 +1,14 @@
 // Edmond Karp MaxFlow
-// Status: tested (CSES1694, CSES1695)
-// O(VE^2) time, O(V+E) space
+/* latex
+\vspace{4pt}
+\noindent
+\begin{tabular}{ll}
+  \hline
+  \textbf{Time} & \textbf{Space} \\ \hline
+  $\bigO(VE^2)$ & $\bigO(V+E)$ \\
+  \hline
+\end{tabular}
+*/
 
 vector<vector<int>> capacity(M, vector<int>(M, 0)), adj(M);
 vector<pair<int, int>> mc; //mincut edges

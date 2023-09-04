@@ -1,13 +1,16 @@
 // Bottom-Up Segment Tree
-// Usage: stree(N);
-// Source: CP Handbook
-// Status: not tested
-// Complexity:
-//  build: O(n)
-//  query: O(log n)
-//  modify: O(log n)
-//  + uses less space than top-down 4n segtree (2n here)
+/* latex
+\vspace{4pt}
+\noindent
+\begin{tabular}{llll}
+  \hline
+  \textbf{Build} & \textbf{Query} & \textbf{Modify} & \textbf{Usage} \\ \hline
+  $\bigO(n)$ & $\bigO(\log n)$ & $\bigO(\log n)$ & \texttt{stree(n)} \\
+  \hline
+\end{tabular}
 
+Uses less space than top-down $4n$ segtree ($2n$ here)
+*/
 struct stree {
   unsigned int n;
   vector<int> tree;

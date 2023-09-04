@@ -1,10 +1,14 @@
 // Segment Tree
-// Usage: stree(N)
-// Complexity:
-//  build: O(nlogn)
-//  query: O(logn)
-//  modify: O(logn)
-
+/* latex
+\vspace{4pt}
+\noindent
+\begin{tabular}{llll}
+  \hline
+  \textbf{Build} & \textbf{Query} & \textbf{Modify} & \textbf{Usage} \\ \hline
+  $\bigO(n\log n)$ & $\bigO(\log n)$ & $\bigO(\log n)$ & \texttt{stree(n)} \\
+  \hline
+\end{tabular}
+*/
 struct stree {
 	int n;
 	vector<int> st, v;

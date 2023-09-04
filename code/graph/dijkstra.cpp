@@ -1,6 +1,14 @@
 // Dijkstra SSSP
-// Status: tested (CF20C)
-// O((V+E) log V) time, O(V^2) space
+/* latex
+\vspace{4pt}
+\noindent
+\begin{tabular}{ll}
+  \hline
+  \textbf{Time} & \textbf{Space} \\ \hline
+  $\bigO((V+E)\log V)$ & $\bigO(V^2)$ \\
+  \hline
+\end{tabular}
+*/
 
 using ii = pair<int, int>;
 const int inf = 0x3f3f3f3f;

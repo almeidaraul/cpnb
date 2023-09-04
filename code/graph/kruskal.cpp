@@ -1,8 +1,14 @@
 // Kruskal MST
-// Usage: Kruskal(V, E, edges) (weighted edges)
-// Status: tested (UVA1174)
-// O(E log V) time, O(V+E) space
-
+/* latex
+\vspace{4pt}
+\noindent
+\begin{tabular}{lll}
+  \hline
+  \textbf{Time} & \textbf{Space} & \textbf{Usage} \\ \hline
+  $\bigO(E\log V)$ & $\bigO(V+E)$ & \texttt{Kruskal(V, E, weighted\_edges)} \\
+  \hline
+\end{tabular}
+*/
 using iii = pair<int, pair<int, int>>; //weight, two vertices
 vector<iii> edges;
 UnionFind muf;

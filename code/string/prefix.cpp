@@ -1,8 +1,7 @@
 // Prefix Function (KMP)
-// Status: not tested
-// Source: CP-Algorithms
-// O(N) time
-
+/* latex
+$\bigO(n)$ time
+*/
 vector<int> prefix(string s) {
 	int n = s.length();
 	vector<int> pi(n, 0); // can be optimized if you know max prefix length

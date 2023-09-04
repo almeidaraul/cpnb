@@ -1,8 +1,14 @@
-// Extended Euclid for solving Linear Diophantine Equations
-// Status: not tested
-// Source: cp-algorithms
-// O(log min(a, b)) time
-
+// Extended Euclid for Linear Diophantines
+/* latex
+\vspace{4pt}
+\noindent
+\begin{tabular}{ll}
+  \hline
+  \textbf{Time} & \textbf{Usage for \texttt{a,b}} \\ \hline
+  $\bigO(\log \textrm{min}(a,b))$ & \texttt{int x, y; gcd(a, b, x, y); }\\
+  \hline
+\end{tabular}
+*/
 int gcd(int a, int b, int& x, int& y) {
   if (!b) {
     x = 1;
@@ -14,9 +20,4 @@ int gcd(int a, int b, int& x, int& y) {
   x = y1;
   y = x1 - y1 * (a / b);
   return d;
-}
-
-int gcd(int a, int b) {
-  int x, y;
-  return gcd(a, b, x, y);
 }

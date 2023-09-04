@@ -1,6 +1,14 @@
 // Sieve of Eratosthenes
-// Status: not tested
-// O(n log log n) time, O(n) space
+/* latex
+\vspace{4pt}
+\noindent
+\begin{tabular}{ll}
+  \hline
+  \textbf{Time} & \textbf{Space} \\ \hline
+  $\bigO(n\log\log n)$ & $\bigO(n)$ \\
+  \hline
+\end{tabular}
+*/
 
 bitset<11234567> pr;
 vector<int> factors(M, 0);

@@ -1,8 +1,14 @@
 // Kosaraju SCC
-// run kosaraju()
-// tested:  cf103931M
-// source: cp-algorithms
-// O(V+E) time & space (2 dfs calls)
+/* latex
+\vspace{4pt}
+\noindent
+\begin{tabular}{ll}
+  \hline
+  \textbf{Time/Space} & \textbf{Usage} \\ \hline
+  $\bigO(V+E)$ & \texttt{kosaraju()} \\
+  \hline
+\end{tabular}
+*/
 
 int n; // number of vertices
 vector<vector<int>> adj(n), adj_rev(n);

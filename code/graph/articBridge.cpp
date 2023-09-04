@@ -1,7 +1,14 @@
 // Articulations and Bridges
-// Usage: dfs(source, -1)
-// Status: not tested
-// O(V+E) time & space
+/* latex
+\vspace{4pt}
+\noindent
+\begin{tabular}{ll}
+  \hline
+  \textbf{Time/Space} & \textbf{Usage} \\ \hline
+  $\bigO(V+E)$ & \texttt{dfs(src, -1)} \\
+  \hline
+\end{tabular}
+*/
 
 int tk = 0;
 vector<int> tin(M, -1);

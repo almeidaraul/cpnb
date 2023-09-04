@@ -1,8 +1,7 @@
-// Rolling hash (O(N))
-// Status: not tested
-// Source: CP-Algorithms
-// O(N) time
-
+// Rolling hash (linear)
+/* latex
+$\bigO(n)$ time
+*/
 ll hash(string const& s) {
   const int p = 31; // ~alphabet size (31 for lowercase, 53 for uppercase)
   const int M = 1e9 + 9;

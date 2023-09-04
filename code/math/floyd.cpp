@@ -1,8 +1,7 @@
 // Floyd's algorithm cycle-finding
-// Status: not tested
-// Source: CPHB (p. 156)
-// O(V) time
-
+/* latex
+$\bigO(V)$ time
+*/
 int findCycle(int x) {
 	int a, b;
 	a = succ(x);

@@ -1,6 +1,14 @@
 // Kahn's topological sort
-// Status: tested (UVA11060)
-// O(VE) time, O(V+E) space
+/* latex
+\vspace{4pt}
+\noindent
+\begin{tabular}{ll}
+  \hline
+  \textbf{Time} & \textbf{Space} \\ \hline
+  $\bigO(VE)$ & $\bigO(V+E)$ \\
+  \hline
+\end{tabular}
+*/
 
 vector<vector<int>> adj(M);
 vector<int> sorted;

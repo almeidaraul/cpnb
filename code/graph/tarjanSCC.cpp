@@ -1,7 +1,14 @@
 // Tarjan Strongly Connected Component
-// Usage: Tarjan(N, adj)
-// Status: tested (UVA247, UVA11838)
-// O(V+E) time & space
+/* latex
+\vspace{4pt}
+\noindent
+\begin{tabular}{ll}
+  \hline
+  \textbf{Time/Space} & \textbf{Usage} \\ \hline
+  $\bigO(V+E)$ & \texttt{Tarjan(n, adj)} \\
+  \hline
+\end{tabular}
+*/
 
 vector<int> tin(M, -1), low(M, -1);
 vector<bool> vis(M);

@@ -1,8 +1,14 @@
 // Merge/Disjoint Union-Find
-// Usage: muf(N);
-// Status: tested (UVA11503)
-// O(Ackermann * N) time, O(N) space
-
+/* latex
+\vspace{4pt}
+\noindent
+\begin{tabular}{lll}
+  \hline
+  \textbf{Time} & \textbf{Space} & \textbf{Usage} \\ \hline
+  $\bigO(A\times n)$ & $\bigO(n)$ & \texttt{muf(n)} \\
+  \hline
+\end{tabular}
+*/
 struct muf {
 	int N;
 	vector<int> par, rk, count;

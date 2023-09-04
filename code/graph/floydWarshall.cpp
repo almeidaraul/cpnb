@@ -1,8 +1,14 @@
 // Floyd Warshall APSP
-// Usage: FloydWarshall(n, edges)
-// Status: tested (UVA821, UVA1056)
-// O(V^3 + E) time, O(V^2 + E) space
-
+/* latex
+\vspace{4pt}
+\noindent
+\begin{tabular}{lll}
+  \hline
+  \textbf{Time} & \textbf{Space} & \textbf{Usage} \\ \hline
+  $\bigO(V^3 + E)$ & $\bigO(V^2+E)$ & \texttt{FloydWarshall(n, edges)} \\
+  \hline
+\end{tabular}
+*/
 struct edge { int v, u, w; };
 const int inf = 0x3f3f3f3f;
 vector<vector<int>> weight(M, vector<int>(M, inf));

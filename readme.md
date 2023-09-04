@@ -56,3 +56,7 @@ after these comments, add the line below:
 vector<int> v(112345, -1);
 ...
 ```
+
+## To do
+- turn complexity notes into oneliners when possible
+- move most theory notes to code (as notes)
