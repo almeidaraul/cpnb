@@ -3,10 +3,10 @@
 using namespace std;
 #define all(x) begin(x), end(x)
 #define endl '\n'
-using ii = pair<int, int>;
 using ll = long long;
-using edg = tuple<ll, int, int>;
+using ii = pair<int, int>;
+using wv = pair<ll, int>;
 
-int32_t main() {
+signed main() {
   cin.tie(0)->sync_with_stdio(0);
 }

@@ -9,26 +9,17 @@
   \hline
 \end{tabular}
 */
-
-using ii = pair<int, int>;
-const int inf = 0x3f3f3f3f;
-vector<vector<ii>> adj(M);
-vector<int> dist(M, inf), par(M, -1);
+vector<int> d(MAXN, oo);
 
 void dijkstra(int s) {
-	dist[s] = 0;
-	priority_queue<ii, vector<ii>, greater<pair<int, int>>> pq;
-	pq.push(make_pair(0, s));
+	priority_queue<wv, vector<wv>, greater<wv>> pq;
+  pq.emplace(d[s] = 0, s);
+  add(s, 0);
 	while (!pq.empty()) {
-		int w = pq.top().first;
-		int v = pq.top().second;
-		pq.pop();
+    auto [w, v] = pq.top(); pq.pop();
 		if (w > dist[v]) continue;
-		for (auto &[d, u]: adj[v])
-			if (dist[v] != inf && dist[v]+d < dist[u]) {
-				par[u] = v;
-				dist[u] = dist[v]+d;
-				pq.push(make_pair(dist[u], u));
-			}
+    for (auto [x, u] : g[v])
+      if (w+x < d[u])
+        pq.emplace(d[u]=w+x, u);
 	}
 }

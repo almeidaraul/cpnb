@@ -9,12 +9,13 @@
   \hline
 \end{tabular}
 */
-vector<edg> edges; // peso, u, v
+using edge = tuple<ll, int, int>; // peso, u, v
+vector<edge> edges;
 UnionFind muf;
 
-pair<ll, vector<edg>> kruskal(int n) { // n = #vertices
-  vector<edg> mst;
-	ll cost = 0; sort(all(edg));
+pair<ll, vector<edge>> kruskal(int n) { // n = #vertices
+  vector<edge> mst;
+	ll cost = 0; sort(all(edges));
   for (auto [w, u, v] : edges)
 		if (!muf.isSameSet(u, v)) {
       mst.emplace_back(w, u, v);
