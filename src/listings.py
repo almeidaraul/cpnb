@@ -44,8 +44,6 @@ if __name__ == "__main__":
         section(d[0].upper() + d[1:])
         d_path = os.path.join(base_path, d)
         files = os.listdir(d_path)
-        if d == "extra":
-            files.pop(files.index("bashrc.sh"))
         for f in os.listdir(d_path):
             listing(os.path.join(d_path, f))
     print("\\pagebreak")

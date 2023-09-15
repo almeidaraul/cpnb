@@ -1,6 +1,8 @@
 // Prefix Function (KMP)
 /* latex
 $\bigO(n)$ time
+
+To find ocurrences of \texttt{s} in \texttt{t}, use the string \texttt{s+\%+t}, then look for \texttt{pi[i] = s.length()} on the "\texttt{t} side"
 */
 vector<int> prefix(string s) {
 	int n = s.length();

@@ -7,32 +7,23 @@
   \hline
 \end{tabular}
 */
-int n, l = ceil(log2(n));
-vector<vector<int>> adj;
-int tk = 0;
-vector<int> tin(n), tout(n);
-vector<vector<int>> up(n, vector<int>(l+1)); // ancestor
+int L = //log2(n)
 
-void dfs(int v, int p) { // run dfs(root, root) to initialize
-	tin[v] = ++tk;
+void dfs(int v, int p) { // uso: dfs(raiz, raiz)
 	up[v][0] = p;
-	for (int i = 1; i <= l; ++i)
-		up[v][i] = up[up[v][i-1]][i-1];
-	for (int u : adj[v])
-		if (u != p)
-			dfs(u, v);
-	tout[v] = ++tk;
+	for (int l = 1; l <= L; ++l)
+		up[v][l] = up[up[v][l-1]][l-1];
+	for (int u : g[v])
+    if (u != p) dfs(u, v);
 }
 
-bool ancestor(int v, int u) { // v is ancestor of u
-	return tin[v] <= tin[u] && tout[v] >= tout[u];
-}
-
-int lca(int v, int u) {
-	if (ancestor(v, u)) return v;
-	if (ancestor(u, v)) return u;
-	for (int i = l; i >= 0; --i)
-		if (!ancestor(up[v][i], u))
-			v = up[v][i];
-	return up[v][0];
+int lca(int a, int b) {
+  if (dep[b] >= dep[a]) { swap(a, b); }
+  int diff = dep[a] - dep[b];
+  for (int l = L; l >= 0; l--) if (diff & (1 << l))
+    a = up[a][l];
+  if (a == b) { return a; }
+  for (int l = L; l >= 0; l--) if (up[a][l] != up[b][l])
+    a = up[a][l], b = up[b][l];
+  return up[a][0];
 }

@@ -2,27 +2,24 @@
 /* latex
 \vspace{4pt}
 \noindent
-\begin{tabular}{lll}
+\begin{tabular}{ll}
   \hline
-  \textbf{Time} & \textbf{Space} & \textbf{Usage} \\ \hline
-  $\bigO(E\log V)$ & $\bigO(V+E)$ & \texttt{Kruskal(V, E, weighted\_edges)} \\
+  \textbf{Time} & \textbf{Space} \\ \hline
+  $\bigO(E\log V)$ & $\bigO(V+E)$ \\
   \hline
 \end{tabular}
 */
-using iii = pair<int, pair<int, int>>; //weight, two vertices
-vector<iii> edges;
+vector<edg> edges; // peso, u, v
 UnionFind muf;
 
-int kruskal() {
-	int cost = 0;
-	sort(edges.begin(), edges.end());
-	for (auto a: edges) {
-		int w = a.first;
-		pair<int, int> e = a.second;
-		if (!muf.isSameSet(e.first, e.second)) {
+pair<ll, vector<edg>> kruskal(int n) { // n = #vertices
+  vector<edg> mst;
+	ll cost = 0; sort(all(edg));
+  for (auto [w, u, v] : edges)
+		if (!muf.isSameSet(u, v)) {
+      mst.emplace_back(w, u, v);
 			cost += w;
-			muf.unionSet(e.first, e.second);
+			muf.unionSet(u, v);
 		}
-	}
-	return cost;
+	return {cost, mst};
 }

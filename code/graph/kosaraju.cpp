@@ -8,40 +8,32 @@
   $\bigO(V+E)$ & \texttt{kosaraju()} \\
   \hline
 \end{tabular}
+
+\texttt{rep}: representante do componente de cada vtx
+
+\texttt{scc}: 2a dfs, processa os vtx do componente c
 */
+vector<int> S, rep(MAXN);
 
-int n; // number of vertices
-vector<vector<int>> adj(n), adj_rev(n);
-vector<bool> used(n);
-vector<int> order, component;
-
-void dfs1(int v) {
-  used[v] = true;
-  for (auto u: adj[v])
-    if (!used[u])
-      dfs1(u);
-  order.push_back(v);
+void dfs(int v) {
+  vis[v] = true;
+  for (int u: g[v])
+    if (!vis[u]) dfs(u);
+  S.push_back(v);
 }
 
-void dfs2(int v) {
-  used[v] = true;
-  component.push_back(v);
-  for (auto u: adj_rev[v])
-    if (!used[u])
-      dfs2(u);
+void scc(int v, int c) {
+  vis[v] = true;
+  rep[v] = c;
+  for (int u: gi[v])
+    if (!vis[u]) scc(u, c);
 }
 
 void kosaraju() {
   for (int i = 0; i < n; ++i)
-    if (!used[i]) dfs1(i);
-
-  used.assign(n, false);
-  reverse(order.begin(), order.end());
-
-  for (auto v: order)
-    if (!used[v]) {
-      dfs2(v);
-      // ...process vertices in component
-      component.clear();
-    }
+    if (!vis[i]) dfs(i);
+  vis.assign(n, false);
+  reverse(S.begin(), S.end());
+  for (int v: order)
+    if (!vis[v]) scc(v, v);
 }

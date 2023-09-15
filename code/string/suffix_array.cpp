@@ -8,6 +8,8 @@
   $\bigO(n\log n)$ & $\bigO(\log n)$ \\
   \hline
 \end{tabular}
+
+To find whether $p$ is a substring of $s$ (and where this ocurrence starts), you can build the suffix array $A$ of $s$. Since $A$ is sorted, you can binary search for $p$ as a prefix of all suffixes of $s$. \textbf{Complexity (besides construction):} $\mathcal{O}(\left|p\right|\log(\left|s\right|))$.
 */
 // sort p by the values in c (stable) (O(|alphabet| + n))
 void count_sort(vector<int> &p, vector<int> &c) {

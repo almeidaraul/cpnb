@@ -407,27 +407,6 @@ A permutation ${}_nP_k$ refers to selecting $k$ objects from a collection of $n$
 
 \textbf{Without repetition:} can't choose an element twice. ${}_nP_k = \frac{n!}{(n-k)!}$
 
-\section{Paradigm}
-\subsection{Bounds in C++}
-\begin{itemize}
-  \item \textbf{Last element $\leq x$:} \texttt{upper\_bound - 1}
-  \item \textbf{First element $\geq x$:} \texttt{lower\_bound}
-  \item \textbf{\texttt{upper\_bound}:} first element $> x$
-  \item \textbf{\texttt{lower\_bound}:} first element $>= x$
-\end{itemize}
-
-\section{String}
-\subsection{Suffix Array}
-To find whether $p$ is a substring of $s$ (and where this ocurrence starts), you can build the suffix array $A$ of $s$. Since $A$ is sorted, you can binary search for $p$ as a prefix of all suffixes of $s$. \textbf{Complexity (besides construction):} $\mathcal{O}(\left|p\right|\log(\left|s\right|))$.
-
-\subsection{Prefix Function (KMP)}
-To find ocurrences of \texttt{s} in \texttt{t}, use the string \texttt{s+\%+t}, then look for \texttt{pi[i] = s.length()} on the "\texttt{t} side"
-
-\subsection{Hash}
-Let $h_{i..j} = \textrm{hash}(s_{i..j})$.
-
-$h_{i..j}\times p^i = h_{0..j} - h_{0..i-1}$. Instead of finding the multiplicative inverse of $p^i$, you can multiply this term by $p^{n-i}$ (so every hash is compared multiplied by $p^n$).
-
 \section{Emergency}
 \noindent
 \textbf{Pre-submit}

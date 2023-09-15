@@ -22,7 +22,7 @@ struct muf {
 		return par[i] == i ? i : (par[i] = findSet(par[i]));
 	}
 	
-	int unionSet(int a, int b) {
+	int unite(int a, int b) {
 		int x = findSet(a), y = findSet(b);
 		if (x != y)
 			count[x] = count[y] = (count[x]+count[y]);
@@ -36,7 +36,7 @@ struct muf {
 		return count[x];
 	}
 
-	bool isSameSet(int i, int j) {
+	bool sameSet(int i, int j) {
 		return findSet(i) == findSet(j);
 	}
 };
