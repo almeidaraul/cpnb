@@ -22,7 +22,6 @@ struct seg {
   seg(int sz) : n(sz), t(2*n) {}
 
   int query(int a, int b) {
-    a += n, b += n;
     int ans = 0;
     for (a += n, b += n; a <= b; ++a /= 2, --b /= 2) {
       if (a%2 == 1) ans += t[a];
