@@ -1,4 +1,4 @@
-// Edmond Karp MaxFlow
+// FFEK MaxFlow
 /* latex
 \vspace{4pt}
 \noindent
