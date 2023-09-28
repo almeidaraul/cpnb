@@ -1,27 +1,29 @@
-// Max Cardinality Bipartite Matching
+// MCBM (Kunh Matching)
 /* latex
 $\bigO(VE)$ time
+
+Max Cardinality Bipartite Matching
+
+\texttt{g}: arcos do lado esquerdo pro lado direito do grafo
 */
-vector<vi> adj(M);
-vi match(M, -1);
-vector<bool> visited(M);
+vi mat;
+vector<bool> vis;
 
-bool augment(int left) { //match one on the left with one on the right
-	if (visited[left]) return false;
-	visited[left] = true;
-	for (auto right: adj[left])
-		if (match[right] == -1 || augment(match[right])) {
-			match[right] = left;
-			return true;
-		}
-	return false;
+bool match(int v) {
+  if (vis[v]) return false;
+  vis[v] = true;
+  for (int u: g[v])
+    if (mat[u] < 0 || match(mat[u])) {
+      mat[u] = v;
+      return true;
+    }
+  return false;
 }
 
-//usage
-//(mcbm = V iff there's at least one way to completely match both sides)
-int mcbm = 0; //number of matched vertices
-match.assign(M, -1);
-for (int v = 0; v < ls; ++v) {//ls = size of the left set
-	visited.assign(ls, false);
-	mcbm += augment(v);
+mat.assign(n, -1);
+int mcbm = 0; // num matched vertices
+for (int i = 0; i < n; ++i) {
+  vis.assign(n, false);
+  mcbm += try_kuhn(i);
 }
+// match: mat[i] -> i (i é do lado direito)
