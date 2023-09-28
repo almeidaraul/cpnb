@@ -9,7 +9,7 @@
   \hline
 \end{tabular}
 */
-vector<vector<int>> w(MAXN, vector<int>(MAXN, oo));
+vector<vi> w(MAXN, vi(MAXN, oo));
 void fw(int n) {
 	for (int m = 0; m < n; ++m)
     for (int u = 0; u < n; ++u)

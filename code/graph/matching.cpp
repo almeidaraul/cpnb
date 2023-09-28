@@ -2,8 +2,8 @@
 /* latex
 $\bigO(VE)$ time
 */
-vector<vector<int>> adj(M);
-vector<int> match(M, -1);
+vector<vi> adj(M);
+vi match(M, -1);
 vector<bool> visited(M);
 
 bool augment(int left) { //match one on the left with one on the right

@@ -13,9 +13,9 @@ Uses less space than top-down $4n$ segtree ($2n$ here)
 */
 struct seg {
   int n;
-  vector<int> t;
+  vi t;
 
-  seg(vector<int> v) : n(v.size()), t(2*n) {
+  seg(vi v) : n(v.size()), t(2*n) {
     for (int i = 0; i < n; ++i)
       upd(i, v[i]);
   }

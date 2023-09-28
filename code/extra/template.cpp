@@ -3,6 +3,8 @@
 using namespace std;
 #define all(x) begin(x), end(x)
 #define endl '\n'
+#define int long long
+using vi = vector<int>;
 using ll = long long;
 using ii = pair<int, int>;
 using wv = pair<ll, int>;

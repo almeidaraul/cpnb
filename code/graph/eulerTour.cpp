@@ -10,7 +10,7 @@
 \end{tabular}
 */
 list<int> cyc;
-vector<vector<int>> adj(M);
+vector<vi> adj(M);
 vector<vector<bool>> traversed(M, vector<bool>(M, false));
 
 //euler tour (list for fast insertion)

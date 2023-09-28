@@ -10,13 +10,13 @@
 \end{tabular}
 */
 
-vector<vector<int>> capacity(M, vector<int>(M, 0)), adj(M);
-vector<pair<int, int>> mc; //mincut edges
+vector<vi> capacity(M, vi(M, 0)), adj(M);
+vector<ii> mc; //mincut edges
 
 int bfs(int s, int t, vi &par) {
 	fill(all(par), -1);
 	par[s] = -2;
-	queue<pair<int, int>> q; q.push({s, inf});
+	queue<ii> q; q.push({s, inf});
 	while (!q.empty()) {
 		int v = q.front().first,
 				flow = q.front().second;
@@ -53,7 +53,7 @@ void mincut(int s, int t) {
 	maxflow(s, t);
 	stack<int> st;
 	vector<bool> visited(n, false);
-	vector<pair<int, int>> ans;
+	vector<ii> ans;
 	st.push(s); // changed from 0 to s
 	while (!st.empty()) {
 		int v = st.top(); st.pop();

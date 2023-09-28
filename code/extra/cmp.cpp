@@ -8,4 +8,4 @@ struct {
   }
 } cmp;
 priority_queue<int, vector<int>, cmp> pq2;
-sort(v.begin(), v.end(), cmp);
+sort(all(v), cmp);

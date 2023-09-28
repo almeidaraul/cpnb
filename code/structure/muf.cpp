@@ -11,7 +11,7 @@
 */
 struct muf {
 	int N;
-	vector<int> par, rk, count;
+	vi par, rk, count;
 
 	muf(int N) : N(N), par(N), rk(N, 0), count(N, 1) {
     for (int i = 0; i < N; ++i)

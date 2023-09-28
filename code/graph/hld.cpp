@@ -10,7 +10,7 @@
 \end{tabular}
 Queries on edges: assign values of edges to child node, then change \texttt{pos[x]} to \texttt{pos[x]+1} in query (see \texttt{!!!})
 */
-vector<int> g[MAXN];
+vi g[MAXN];
 int wg[MAXN],par[MAXN],h[MAXN]; // subtree size,father,height
 void dfs1(int x){
 	wg[x]=1;

@@ -11,8 +11,8 @@
 */
 
 int tk = 0;
-vector<int> tin(M, -1);
-vector<vector<int>> adj(M);
+vi tin(M, -1);
+vector<vi> adj(M);
 
 void dfs(int v, int p) {
 	tin[v] = low[v] = tk++;

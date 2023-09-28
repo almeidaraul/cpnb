@@ -7,8 +7,7 @@
   \hline
 \end{tabular}
 */
-using ii = pair<int, int>;
-vector<int> idx(n);
+vi idx(n);
 int tk = 1;
 
 void dfs(int v, int d) { // call with dfs(root, 0);

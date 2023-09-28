@@ -13,7 +13,7 @@
 
 \texttt{scc}: 2a dfs, processa os vtx do componente c
 */
-vector<int> S, rep(MAXN);
+vi S, rep(MAXN);
 
 void dfs(int v) {
   vis[v] = true;
@@ -33,7 +33,7 @@ void kosaraju() {
   for (int i = 0; i < n; ++i)
     if (!vis[i]) dfs(i);
   vis.assign(n, false);
-  reverse(S.begin(), S.end());
+  reverse(all(S));
   for (int v: order)
     if (!vis[v]) scc(v, v);
 }

@@ -10,9 +10,9 @@
 \end{tabular}
 */
 
-vector<int> tin(M, -1), low(M, -1);
+vi tin(M, -1), low(M, -1);
 vector<bool> vis(M);
-vector<vector<int> adj(M);
+vector<vi> adj(M);
 stack<int> S;
 int tk = 0;
 

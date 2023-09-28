@@ -11,8 +11,8 @@
 */
 
 bitset<11234567> pr;
-vector<int> factors(M, 0);
-vector<int> primes;
+vi factors(M, 0);
+vi primes;
 
 void sieve(int n) {
 	pr.set();

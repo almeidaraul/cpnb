@@ -9,7 +9,7 @@
   \hline
 \end{tabular}
 */
-vector<int> d(MAXN, oo);
+vi d(MAXN, oo);
 
 void dijkstra(int s) {
 	priority_queue<wv, vector<wv>, greater<wv>> pq;

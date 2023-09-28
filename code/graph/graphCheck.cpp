@@ -10,8 +10,8 @@
 \end{tabular}
 */
 int UNVISITED = -1, EXPLORED = 0, VISITED = 1;
-vector<vector<int>> adj(M);
-vector<int> tin;
+vector<vi> adj(M);
+vi tin;
 
 void graphCheck(int v, int p) { //vertex, parent
 	tin[v] = EXPLORED;

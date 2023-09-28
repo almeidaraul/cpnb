@@ -1,6 +1,6 @@
 // C++ structs
 struct st {
-  vector<int> a;
+  vi a;
   vector<bool> b = vector<bool>(5); // default value
   int i;
   st(int _i) : a(_i), i(_i) {};
@@ -10,8 +10,8 @@ struct st {
 st e = st(3); st f(3);
 
 struct matrix {
-  vector<vector<int>> m;
-  matrix(int n) m(n, vector<int>(n)) {};
+  vector<vi> m;
+  matrix(int n) m(n, vi(n)) {};
   matrix operator * (const matrix &b) {
     matrix c = matrix();
     for (int i = 0; i < m.size(); ++i)

@@ -10,8 +10,8 @@
 \end{tabular}
 */
 
-vector<int> primes;
-vector<pair<int, int>> factors;
+vi primes;
+vector<ii> factors;
 
 void pf(int n) {
 	for (auto p: primes) {

@@ -10,11 +10,11 @@
 \end{tabular}
 */
 
-vector<vector<int>> adj(M);
-vector<int> sorted;
+vector<vi> adj(M);
+vi sorted;
 
 void kahn(int n) {
-	vector<int> indeg(n, 0);
+	vi indeg(n, 0);
 	vector<bool> valid(n, true);
 	priority_queue<int> pq;
 	

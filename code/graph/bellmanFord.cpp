@@ -10,8 +10,8 @@
 \end{tabular}
 */
 const int inf = 0x3f3f3f3f;
-vector<vector<pair<int, int>>> adj(M);
-vector<int> dist(M, inf);
+vector<vector<ii>> adj(M);
+vi dist(M, inf);
 
 void bellmanFord(int n) {
 	for (int i = 0; i < n-1; ++i)

@@ -11,9 +11,9 @@
 */
 struct stree {
 	int n;
-	vector<int> st, v;
+	vi st, v;
 	
-	stree(vector<int> v): n(v.size()), st(4*n), v(v) {
+	stree(vi v): n(v.size()), st(4*n), v(v) {
     build(1, 0, n-1); }
 	}
 
