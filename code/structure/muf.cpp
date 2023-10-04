@@ -9,21 +9,21 @@
   \hline
 \end{tabular}
 */
-struct muf {
+struct MUF {
 	int N;
 	vi par, rk, count;
 
-	muf(int N) : N(N), par(N), rk(N, 0), count(N, 1) {
-    for (int i = 0; i < N; ++i)
+	MUF(int N) : N(N), par(N), rk(N, 0), count(N, 1) {
+    rep(i,0,N)
       par[i] = i;
 	}
 
-	int findSet(int i) {
-		return par[i] == i ? i : (par[i] = findSet(par[i]));
+	int find(int i) {
+		return par[i] == i ? i : (par[i] = find(par[i]));
 	}
 	
-	int unite(int a, int b) {
-		int x = findSet(a), y = findSet(b);
+	int merge(int a, int b) {
+		int x = find(a), y = find(b);
 		if (x != y)
 			count[x] = count[y] = (count[x]+count[y]);
 		if (rk[x] < rk[y])
@@ -36,7 +36,7 @@ struct muf {
 		return count[x];
 	}
 
-	bool sameSet(int i, int j) {
-		return findSet(i) == findSet(j);
+	bool same(int i, int j) {
+		return find(i) == find(j);
 	}
 };

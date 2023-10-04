@@ -1,6 +1,9 @@
 // C++ Template
 #include <bits/stdc++.h>
 using namespace std;
+#define fi first
+#define se second
+#define rep(i,a,b) for (int i = (a); i < (b); ++i)
 #define all(x) begin(x), end(x)
 #define endl '\n'
 #define int long long
