@@ -10,11 +10,11 @@
 \end{tabular}
 */
 struct MUF {
-	int N;
-	vi par, rk, count;
+	int n;
+	vi par, rk, sz;
 
-	MUF(int N) : N(N), par(N), rk(N, 0), count(N, 1) {
-    rep(i,0,N)
+	MUF(int n) : n(n), par(n), rk(n, 0), sz(n, 1) {
+    rep(i,0,n)
       par[i] = i;
 	}
 
@@ -23,17 +23,14 @@ struct MUF {
 	}
 	
 	int merge(int a, int b) {
-		int x = find(a), y = find(b);
-		if (x != y)
-			count[x] = count[y] = (count[x]+count[y]);
-		if (rk[x] < rk[y])
-			par[x] = y;
-		else {
-			par[y] = x;
-			if (rk[x] == rk[y])
-				rk[x]++;
-		}
-		return count[x];
+    a = find(a); b = find(b);
+    if (a != b)
+      sz[a] = sz[b] = (sz[x] + sz[y]);
+		if (rk[a] < rk[b])
+      swap(a, b);
+    par[b] = a;
+    rk[a] += rk[a] == rk[b];
+		return sz[x];
 	}
 
 	bool same(int i, int j) {
