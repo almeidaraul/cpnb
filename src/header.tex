@@ -413,6 +413,18 @@ A permutation ${}_nP_k$ refers to selecting $k$ objects from a collection of $n$
 \subsection{90deg rot matrix}
 \texttt{m[i][j] = m[N-j-1][i]}
 
+\subsection{Max LCP in list of strings}
+Pra pegar o maior LCP numa lista de strings, basta ordenar ela e comparar cada string $i$ com a $i-1$ e a $i+1$
+
+\subsection{Together Square}
+Let $f(N)$ be the largest square divisor of an integer $N$, and $P(x)$ whether $x$ is a square number.
+
+For integers $i,j$, $P(i\times j) \iff \frac{i\times j}{f(i)\times f(j)}$.
+
+Since $\frac{i}{f(i)}$ is indivisible by a prime p twice or more,
+
+$P(\frac{i\times j}{f(i)\times f(j)}) \iff \frac{i}{f(i)} = \frac{j}{f(j)}$
+
 \section{Emergency}
 \noindent
 \textbf{Pre-submit}
