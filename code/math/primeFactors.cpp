@@ -8,20 +8,33 @@
   $\bigO(\pi(\sqrt{n}))$ & $\bigO(n)$ \\
   \hline
 \end{tabular}
+
+\texttt{lcm} is the same size as \texttt{primes}
+and stores the exponent of each prime in the LCM
+of all factorized numbers.
+
+Useful to calculate LCM mod some P. You can also use map
 */
 
-vi primes;
-vector<ii> factors;
+vi primes, lcm;
 
-void pf(int n) {
-	for (auto p: primes) {
+vector<ii> pf(int n) {
+  vector<ii> factors;
+  rep(i,0,primes.size()) {
+    int p = primes[i];
 		if (p*p > n) break;
-		int i = 0;
+		int e = 0;
 		while (!(n%p)) {
 			n /= p;
-			i++;
+			e++;
 		}
-		factors.push_back({p, i});
+		factors.push_back({p, e});
+    lcm[i] = max(lcm[i], e);
 	}
-	if (n != 1) factors.push_back({n, 1});
+	if (n != 1) {
+    factors.push_back({n, 1});
+    int ix = lower_bound(all(primes), n) - primes.begin();
+    lcm[ix] = max(lcm[ix], 1);
+  }
+  return factors;
 }
