@@ -1,9 +1,19 @@
 // Palindromic Tree
 /* latex
-não sei kkkk teria que aprender pra saber
-
 árvore de palíndromos + cada letra tem um custo e vc quer maximizar
 (pra tirar o custo só remover \texttt{sigmac} e \texttt{cost})
+
+Construção $\bigO(|S|\log\Sigma)$, $S=$ sua string. Cada índice é
+um nó, e cada nó representa um palíndromo diferente.
+
+\texttt{to[i][c]} é o vértice do palíndromo $c\texttt{i}c$
+
+\texttt{link[i]} é o vértice do maior sufixo palindrômico de $i$
+
+\texttt{len[i]} é o tamanho do palíndromo $i$
+
+\texttt{s[i]} é o primeiro caractere no palíndromo $i$ (isso é
+altamente duvidável)
 */
 int sigmac[26];
 
