@@ -5,23 +5,23 @@
 \begin{tabular}{llll}
   \hline
   \textbf{Build} & \textbf{Query} & \textbf{Update} & \textbf{Usage} \\ \hline
-  $\bigO(n)$ & $\bigO(\log n)$ & $\bigO(\log n)$ & \texttt{seg(n)} \\
+  $\bigO(n)$ & $\bigO(\log n)$ & $\bigO(\log n)$ & \texttt{Seg(n)} \\
   \hline
 \end{tabular}
 
-Uses less space than top-down $4n$ segtree ($2n$ here)
+Uses less space than top-down $4n$ Segtree ($2n$ here)
 */
-struct seg {
+struct Seg {
   int n;
   vi t;
 
-  seg(vi v) : n(v.size()), t(2*n) {
+  Seg(vi v) : n(v.size()), t(2*n) {
     for (int i = 0; i < n; ++i)
       upd(i, v[i]);
   }
-  seg(int sz) : n(sz), t(2*n) {}
+  Seg(int sz) : n(sz), t(2*n) {}
 
-  int query(int a, int b) {
+  int qry(int a, int b) {
     int ans = 0;
     for (a += n, b += n; a <= b; ++a /= 2, --b /= 2) {
       if (a%2 == 1) ans += t[a];
