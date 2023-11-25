@@ -15,11 +15,13 @@ struct Seg {
   int n;
   vi t;
 
-  Seg(vi v) : n(v.size()), t(2*n) {
+  Seg(vi v) : n(v.size()), t(2*n+2) {
     for (int i = 0; i < n; ++i)
-      upd(i, v[i]);
+      t[i+n+1] = v[i];
+    for (int i = n; i; --i)
+      t[i] = t[i<<1]+t[(i<<1)+1];
   }
-  Seg(int sz) : n(sz), t(2*n) {}
+  Seg(int sz) : n(sz), t(2*n+2) {}
 
   int qry(int a, int b) {
     int ans = 0;
